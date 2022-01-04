@@ -1,2 +1,3 @@
-# NotSoLegacyWorkspace
-An updated minecraft 1.7.10 workpsace with Gradle 5.6.4, let's not stay so outdated!
+# 地下生存
+
+这个Mod为Minecraft 1.7.10添加了地下生存玩法。使用/underground开启地下生存。地下生存开启后，玩家暴露在地面超过一定时间就会立刻死亡。

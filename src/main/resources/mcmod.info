@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "underground",
+  "name": "Underground",
+  "description": "Make the player killed while not underground",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Chlamydomonos"],
+  "credits": "X'bao! Th'wagh! Chlamydomonos xia'd tschilhib'sgn!",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

@@ -1,0 +1,5 @@
+commands.underground.usage=查询/设置地下模式开启：\n/underground <enabled> [true/false]\n查询/设置地面死亡时间：\n/underground <time> [时间]
+commands.underground.enabled=地下模式已设置为 %1$s
+commands.underground.time=地面死亡时间已设置为 %1$s 秒
+message.underground.onGround=警告，你正处于地面，距离天罚降临还剩 %1$s 秒
+death.attack.underground= %1$s 因为处于地面，被天罚杀死了

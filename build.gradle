@@ -1,3 +1,4 @@
+
 buildscript {
     repositories {
         mavenCentral()
@@ -21,9 +22,9 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+version = "1.0.0"
+group= "xyz.chlamydomonos.underground" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "underground"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 minecraft {
@@ -44,7 +45,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    implementation 'org.jetbrains:annotations:22.0.0'
 }
 
 processResources {
@@ -64,4 +65,8 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+repositories {
+    mavenCentral()
 }
