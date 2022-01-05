@@ -35,7 +35,9 @@ public class PlayerTickHandler
         TimeOnGround timeOnGround = TimeOnGround.getFromPlayer(player);
         WorldSettings.GameType gameType = player.theItemInWorldManager.getGameType();
 
-        if(gameType.isSurvivalOrAdventure() && UndergroundMode.getFromWorld(world).isUndergroundEnabled())
+        if((gameType == WorldSettings.GameType.SURVIVAL ||
+            gameType == WorldSettings.GameType.ADVENTURE) &&
+           UndergroundMode.getFromWorld(world).isUndergroundEnabled())
         {
             if(timeOnGround.getTime() < 0)
             {

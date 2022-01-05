@@ -22,7 +22,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0.1"
+version = "1.0.2"
 group= "xyz.chlamydomonos.underground" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "underground"
 sourceCompatibility = JavaVersion.VERSION_1_8

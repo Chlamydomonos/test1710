@@ -15,7 +15,7 @@ public class Underground
 {
     public static final String MODID = "underground";
     public static final String NAME = "Underground";
-    public static final String VERSION = "1.0.1";
+    public static final String VERSION = "1.0.2";
     public static final String ACCEPTED_MINECRAFT_VERSIONS = "1.7.10";
 
     @Mod.Instance(Underground.MODID)
