@@ -31,7 +31,7 @@ public class PlayerTickHandler
         ChunkCoordinates temp = player.getPlayerCoordinates();
         World world = player.worldObj;
 
-        float skyBrightness = world.getSkyBlockTypeBrightness(EnumSkyBlock.Sky, temp.posX, temp.posY, temp.posZ);
+        float skyBrightness = world.getSavedLightValue(EnumSkyBlock.Sky, temp.posX, temp.posY, temp.posZ);
         TimeOnGround timeOnGround = TimeOnGround.getFromPlayer(player);
         WorldSettings.GameType gameType = player.theItemInWorldManager.getGameType();
 
