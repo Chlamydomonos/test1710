@@ -2,7 +2,6 @@ package xyz.chlamydomonos.underground.player;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentTranslation;
@@ -11,6 +10,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
 import net.minecraftforge.common.MinecraftForge;
+import org.jetbrains.annotations.NotNull;
 import xyz.chlamydomonos.underground.data.TimeOnGround;
 import xyz.chlamydomonos.underground.data.UndergroundMode;
 
@@ -23,19 +23,7 @@ public class PlayerTickHandler
     }
 
     @SubscribeEvent
-    public void onPlayerItemPickUp(PlayerEvent.ItemPickupEvent event)
-    {
-
-    }
-
-    @SubscribeEvent
-    public void onServerTick(TickEvent.ServerTickEvent event)
-    {
-
-    }
-
-    @SubscribeEvent
-    public void onPlayerTick(TickEvent.PlayerTickEvent event)
+    public void onPlayerTick(TickEvent.@NotNull PlayerTickEvent event)
     {
         if(!(event.player instanceof EntityPlayerMP))
             return;
@@ -52,7 +40,14 @@ public class PlayerTickHandler
             if(timeOnGround.getTime() < 0)
             {
                 if(!player.isDead && skyBrightness > 0.01)
+                {
                     timeOnGround.setTime(UndergroundMode.getFromWorld(world).getDeathTicks());
+                    if(timeOnGround.getExtraTime() > 0)
+                        player.addChatMessage(new ChatComponentTranslation(
+                                "message.underground.warn1",
+                                Double.toString((double) (timeOnGround.getExtraTime()) / 20.0)
+                        ));
+                }
             }
             else if(timeOnGround.getTime() == 0)
             {
@@ -63,13 +58,21 @@ public class PlayerTickHandler
             {
                 if(skyBrightness > 0.01)
                 {
-                    timeOnGround.setTime(timeOnGround.getTime() - 1);
-
-                    if(timeOnGround.getTime() % 20 == 0)
+                    if(timeOnGround.getExtraTime() > 0)
                     {
-                        player.addChatMessage(new ChatComponentTranslation(
-                                "message.underground.onGround", Integer.toString(timeOnGround.getTime() / 20)
-                        ));
+                        timeOnGround.setExtraTime(timeOnGround.getExtraTime() - 1);
+                    }
+                    else
+                    {
+                        timeOnGround.setTime(timeOnGround.getTime() - 1);
+
+                        if (timeOnGround.getTime() % 20 == 0)
+                        {
+                            player.addChatMessage(new ChatComponentTranslation(
+                                    "message.underground.warn2",
+                                    Integer.toString(timeOnGround.getTime() / 20)
+                            ));
+                        }
                     }
                 }
                 else
